@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Crimson+Pro:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cuphead Vintage Warm Design System */
+
+@layer base {
+  :root {
+    /* Vintage warm palette */
+    --background: 35 45% 94%; /* Cream #F5E6D3 */
+    --foreground: 25 30% 12%; /* Dark brown */
+
+    --card: 35 40% 90%;
+    --card-foreground: 25 30% 12%;
+
+    --popover: 35 45% 94%;
+    --popover-foreground: 25 30% 12%;
+
+    --primary: 20 56% 30%; /* Warm brown #8B4513 */
+    --primary-foreground: 35 45% 94%;
+
+    --secondary: 35 35% 85%;
+    --secondary-foreground: 25 30% 12%;
+
+    --muted: 35 30% 88%;
+    --muted-foreground: 25 20% 40%;
+
+    --accent: 40 70% 50%; /* Golden accent */
+    --accent-foreground: 25 30% 12%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 35 45% 94%;
+
+    --border: 25 25% 70%;
+    --input: 35 30% 85%;
+    --ring: 20 56% 30%;
+
+    --radius: 0.5rem;
+
+    /* Custom vintage colors */
+    --vintage-cream: 35 45% 94%;
+    --vintage-brown: 20 56% 30%;
+    --vintage-dark: 25 30% 12%;
+    --vintage-gold: 40 70% 50%;
+    --vintage-sepia: 30 40% 75%;
+    --vintage-rust: 15 60% 40%;
+
+    --sidebar-background: 35 40% 90%;
+    --sidebar-foreground: 25 30% 12%;
+    --sidebar-primary: 20 56% 30%;
+    --sidebar-primary-foreground: 35 45% 94%;
+    --sidebar-accent: 35 35% 85%;
+    --sidebar-accent-foreground: 25 30% 12%;
+    --sidebar-border: 25 25% 70%;
+    --sidebar-ring: 20 56% 30%;
+  }
+
+  .dark {
+    --background: 25 30% 8%;
+    --foreground: 35 45% 90%;
+
+    --card: 25 28% 12%;
+    --card-foreground: 35 45% 90%;
+
+    --popover: 25 28% 12%;
+    --popover-foreground: 35 45% 90%;
+
+    --primary: 40 70% 55%;
+    --primary-foreground: 25 30% 8%;
+
+    --secondary: 25 25% 18%;
+    --secondary-foreground: 35 45% 90%;
+
+    --muted: 25 25% 18%;
+    --muted-foreground: 35 30% 60%;
+
+    --accent: 40 70% 55%;
+    --accent-foreground: 25 30% 8%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 35 45% 90%;
+
+    --border: 25 25% 25%;
+    --input: 25 25% 18%;
+    --ring: 40 70% 55%;
+
+    --vintage-cream: 25 30% 8%;
+    --vintage-brown: 40 70% 55%;
+    --vintage-dark: 35 45% 90%;
+    --vintage-gold: 40 75% 60%;
+    --vintage-sepia: 30 30% 30%;
+    --vintage-rust: 15 50% 50%;
+
+    --sidebar-background: 25 28% 10%;
+    --sidebar-foreground: 35 45% 90%;
+    --sidebar-primary: 40 70% 55%;
+    --sidebar-primary-foreground: 25 30% 8%;
+    --sidebar-accent: 25 25% 15%;
+    --sidebar-accent-foreground: 35 45% 90%;
+    --sidebar-border: 25 25% 20%;
+    --sidebar-ring: 40 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Cuphead-style animations */
+@layer utilities {
+  /* Wobble animation for hover effects */
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+
+  @keyframes wobble-slow {
+    0%, 100% { transform: rotate(-0.5deg) scale(1); }
+    50% { transform: rotate(0.5deg) scale(1.01); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes squash {
+    0%, 100% { transform: scaleY(1) scaleX(1); }
+    50% { transform: scaleY(0.95) scaleX(1.05); }
+  }
+
+  @keyframes hand-drawn-border {
+    0%, 100% { 
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+    25% { 
+      border-radius: 15px 255px 15px 225px/225px 15px 255px 15px;
+    }
+    50% { 
+      border-radius: 225px 15px 255px 15px/15px 255px 15px 225px;
+    }
+    75% { 
+      border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--vintage-gold) / 0.4); }
+    50% { box-shadow: 0 0 20px 5px hsl(var(--vintage-gold) / 0.2); }
+  }
+
+  .animate-wobble {
+    animation: wobble 0.3s ease-in-out;
+  }
+
+  .animate-wobble-slow {
+    animation: wobble-slow 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-squash {
+    animation: squash 0.2s ease-in-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Cuphead hand-drawn border style */
+  .cuphead-border {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 3px solid hsl(var(--vintage-dark));
+    transition: all 0.3s ease;
+  }
+
+  .cuphead-border:hover {
+    animation: hand-drawn-border 0.5s ease-in-out;
+    border-radius: 15px 255px 15px 225px/225px 15px 255px 15px;
+  }
+
+  .cuphead-card {
+    border-radius: 30px 10px 30px 10px/10px 30px 10px 30px;
+    border: 3px solid hsl(var(--vintage-dark));
+    background: hsl(var(--card));
+    box-shadow: 8px 8px 0 hsl(var(--vintage-dark) / 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .cuphead-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 hsl(var(--vintage-dark) / 0.3);
+  }
+
+  .cuphead-button {
+    border-radius: 20px 5px 20px 5px/5px 20px 5px 20px;
+    border: 3px solid hsl(var(--vintage-dark));
+    box-shadow: 4px 4px 0 hsl(var(--vintage-dark));
+    transition: all 0.15s ease;
+  }
+
+  .cuphead-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 hsl(var(--vintage-dark));
+  }
+
+  .cuphead-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 hsl(var(--vintage-dark));
+  }
+
+  /* Vintage decorative elements */
+  .vintage-divider {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--vintage-brown)) 20%,
+      hsl(var(--vintage-gold)) 50%,
+      hsl(var(--vintage-brown)) 80%,
+      transparent
+    );
+    border-radius: 2px;
+  }
+
+  .vintage-text-shadow {
+    text-shadow: 3px 3px 0 hsl(var(--vintage-dark) / 0.2);
+  }
+
+  /* Stagger animations for children */
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+  .stagger-children > *:nth-child(7) { animation-delay: 0.7s; }
+  .stagger-children > *:nth-child(8) { animation-delay: 0.8s; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--vintage-sepia));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--vintage-brown));
+  border-radius: 10px;
+  border: 2px solid hsl(var(--vintage-sepia));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--vintage-rust));
+}
