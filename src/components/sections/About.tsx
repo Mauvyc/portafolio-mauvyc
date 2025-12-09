@@ -17,7 +17,7 @@ export function About() {
             <div className="cuphead-card p-4 bg-card animate-wobble-slow">
               <div className="w-64 h-64 md:w-80 md:h-80 bg-muted flex items-center justify-center overflow-hidden">
                 <img
-                  src="/mauricio.png"
+                  src={`${import.meta.env.BASE_URL}mauricio.png`}
                   alt="Mauricio Aldana"
                   className="w-full h-full object-cover"
                 />
